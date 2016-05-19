@@ -7,8 +7,13 @@
     RESTCOMM_PASSWORD_VAR: "{{ RESTCOMM_PASSWORD }}"
     PHONE_NUMBER_VAR: "{{ PHONE_NUMBER}}"
     DID_DOMAIN_VAR: "{{ DID_DOMAIN}}"
-
   changed_when: true
   notify: 
     - dump config
+
+- name: start app
+  command: /bin/true
+  when: STARTED == 'true'
+  notify:
     - restart
+
